@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends AbstractPage {
 
-  protected WebDriver driver;
-
   public LoginPage(WebDriver driver) {
     super.driver = driver;
 //    super.wait = new WebDriverWait(driver, 2);

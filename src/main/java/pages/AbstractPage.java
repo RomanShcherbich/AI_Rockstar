@@ -12,18 +12,20 @@ import java.util.List;
 public abstract class AbstractPage extends AssertPages {
 
   protected WebDriver driver;
-
-//  protected WebDriverWait wait;
+  protected WebDriverWait wait;
 
   protected boolean isElementDisplayed(By by) {
-//    waitElement(by);
+    waitElement(by);
     List<WebElement> elements = driver.findElements(by);
     return !elements.isEmpty();
   }
 
-//  protected void waitElement(By by) {
-//    wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-//  }
+  protected void waitElement(By by) {
+    if (wait == null) {
+      wait = new WebDriverWait(driver, 2);
+    }
+    wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+  }
 
   protected void insertText(By textElement, String inputText) {
     WebElement field = driver.findElement(textElement);
@@ -48,8 +50,8 @@ public abstract class AbstractPage extends AssertPages {
 
   protected void clickButtonLog(By buttonElement) {
 //    waitElement(buttonElement);
-    if (isElementDisplayed(buttonElement)){
-    System.out.println("Button > " + getElementText(buttonElement));
+    if (isElementDisplayed(buttonElement)) {
+      System.out.println("Button > " + getElementText(buttonElement));
     }
     clickButton(buttonElement);
   }
