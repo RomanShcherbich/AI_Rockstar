@@ -36,7 +36,7 @@ public class LoginPage extends AbstractPage {
   private static By byLoginPage = new By.ByXPath("//div[@class='auth-box-w']");
   private static By byLogoArea = new By.ByXPath("//div[@class='logo-w']");
   private static By byHeaderArea = new By.ByXPath("//h4[@class='auth-header']");
-  private static By byAlertArea = new By.ByXPath("//h4/following-sibling::div[1]");
+  private static By byAlertArea = new By.ByXPath("//h4/following-sibling::div[last()]");
   private static By byLoginArea = new By.ByXPath("//form");
 
   public SecuredPage clickLogin(String username, String password, String alert) {
