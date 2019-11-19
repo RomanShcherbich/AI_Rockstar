@@ -1,12 +1,7 @@
 package pages;
 
-import com.applitools.eyes.selenium.Eyes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.junit.Assert;
-
-import java.util.List;
 
 public class SecuredPage extends AbstractPage{
 
@@ -24,6 +19,6 @@ public class SecuredPage extends AbstractPage{
   }
 
   public void assertLoggedIn() {
-    assertBoolean("The login is not passed", isElementDisplayed(byLoggedUserIcon));
+    assertTrue("The login is not passed", isElementDisplayed(byLoggedUserIcon));
   }
 }
