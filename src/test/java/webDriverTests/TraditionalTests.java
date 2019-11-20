@@ -7,6 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({  webDriverTests.LoginPageUiElementsTest.class,
     webDriverTests.DataDrivenTests.class,
-    webDriverTests.TableSortTest.class
+    TableSortTests.class,
+    webDriverTests.CanvasChartTests.class
 })
 public class TraditionalTests { }

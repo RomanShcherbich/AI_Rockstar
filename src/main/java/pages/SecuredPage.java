@@ -79,4 +79,8 @@ public class SecuredPage extends AbstractPage {
     clickButton(byLinkExpenses);
     return new ExpensesComparisonPage(driver);
   }
+
+  public void buttonAmountHasText(String text) {
+    assertElementText(text, byColumnAmount);
+  }
 }
