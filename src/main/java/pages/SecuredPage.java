@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -40,7 +39,7 @@ public class SecuredPage extends AbstractPage {
     List<String> beforeOrdering = rowValuesToString(sortByAmount(rowsElementsBefore));
     List<String> afterOrdering = rowValuesToString(rowsElementsAfter.stream());
 
-    assertGridRows("", beforeOrdering, afterOrdering);
+    assertListData("", beforeOrdering, afterOrdering);
   }
 
   private List<String> rowValuesToString(Stream<WebElement> stream) {

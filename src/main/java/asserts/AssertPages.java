@@ -18,14 +18,21 @@ public abstract class AssertPages {
     Assert.assertFalse("ERROR -> " + errorMessage, tf);
   }
 
-  public void assertGridRows(String errorMessage, List<String> beforeRows, List<String> afterRows) {
+  public void assertListData(String errorMessage, List<String> expectedList, List<String> actualList) {
 
     String errorDetails = "";
-    for (int i = 0; i < beforeRows.size(); i++) {
-      String beforeRow = beforeRows.get(i);
-      String afterRow = afterRows.get(i);
+
+    if (expectedList.size() != actualList.size()) {
+      errorDetails += "Row count are different"
+          + "\n\t\t" + "Before: " + expectedList.size()
+          + "\n\t\t" + "After: " + actualList.size() + "\n";
+    }
+
+    for (int i = 0; i < expectedList.size(); i++) {
+      String beforeRow = expectedList.get(i);
+      String afterRow = actualList.get(i);
       if (!beforeRow.equals(afterRow)) {
-        errorDetails += "Row #" + (i+1)
+        errorDetails += "Index #" + (i+1)
             + "\n\t\t" + "Before: " + beforeRow
             + "\n\t\t" + "After: " + afterRow + "\n";
       }

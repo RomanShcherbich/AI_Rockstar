@@ -15,7 +15,7 @@ public class CanvasChartTests extends TableSortTests {
   @Test
   public void NewYearInChartTest() {
     ExpensesComparisonPage chartPage = expensesComparisonPage();
-    chartPage.addYearAndCheck();
+    chartPage.addYearAndCheckData();
   }
 
   public ExpensesComparisonPage expensesComparisonPage() {

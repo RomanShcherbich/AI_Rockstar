@@ -1,13 +1,11 @@
 package pages;
 
 import asserts.AssertPages;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractPage extends AssertPages {
@@ -89,5 +87,15 @@ public abstract class AbstractPage extends AssertPages {
       System.out.println("Button > " + getElementText(buttonElement));
     }
     clickButton(buttonElement);
+  }
+
+
+  protected Object executeJsScript(String script){
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    return js.executeScript(script);
+  }
+
+  protected ArrayList toArrayList(Object object) {
+    return (ArrayList) object;
   }
 }
