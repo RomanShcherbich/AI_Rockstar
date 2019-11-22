@@ -39,7 +39,7 @@ public class SecuredPage extends AbstractPage {
     List<String> beforeOrdering = rowValuesToString(sortByAmount(rowsElementsBefore));
     List<String> afterOrdering = rowValuesToString(rowsElementsAfter.stream());
 
-    assertListData("", beforeOrdering, afterOrdering);
+    assertFail(assertListData("", beforeOrdering, afterOrdering));
   }
 
   private List<String> rowValuesToString(Stream<WebElement> stream) {

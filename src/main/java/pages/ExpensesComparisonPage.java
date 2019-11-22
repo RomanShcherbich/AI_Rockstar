@@ -1,9 +1,14 @@
 package pages;
 
+import testData.TestDataSets;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class ExpensesComparisonPage extends AbstractPage {
 
@@ -11,7 +16,10 @@ public class ExpensesComparisonPage extends AbstractPage {
     super.driver = driver;
   }
 
-  private static By byExpencesCanvas = new By.ByXPath("//canvas[@id='canvas']");
+  private TestDataSets expectedDataSet = new TestDataSets();
+
+  private HashMap<String, List<String>> expectedChartData = expectedDataSet.getExpectedChart();
+  private List<String> expectedMonths = expectedDataSet.getExpectedMonths();
 
   private static By byButtonAddYear = new By.ByXPath("//button[@class='btn btn-warning']");
 
@@ -22,27 +30,31 @@ public class ExpensesComparisonPage extends AbstractPage {
     assertElementText(text, byButtonAddYear);
   }
 
-  public void addYearAndCheckData() {
-    HashMap<String, List<String>> beforeYearsData = getNewYearChart();
-    List<String> beforeMonths = getMonths();
+  public void checkChartData() {
 
-    clickButton(byButtonAddYear);
+    String errorDetails = "";
 
-    HashMap<String, List<String>> afterYearsData = getNewYearChart();
-    List<String> afterMonths = getMonths();
+    HashMap<String, List<String>> actualYearsData = getChartData();
+    List<String> actualMonths = getMonths();
 
-    assertListData("There are invalid months", beforeMonths, afterMonths);
-
-    for (var entry : beforeYearsData.entrySet()
-         ) {
+    for (var entry : actualYearsData.entrySet()
+    ) {
       String year = entry.getKey();
-      List<String> expected = entry.getValue();
-      List<String> actual = afterYearsData.get(year);
-      assertListData("There are invalid years data", expected, actual);
+      List<String> expected = expectedChartData.get(year);
+      List<String> actual = entry.getValue();
+      errorDetails += assertListData("There are invalid data for " + year, expected, actual);
     }
+    errorDetails += assertListData("There are invalid months", expectedMonths, actualMonths);
+
+    assertFail(errorDetails);
   }
 
-  private HashMap<String, List<String>> getNewYearChart() {
+  public void addYearAndCheckData() {
+    clickButton(byButtonAddYear);
+    checkChartData();
+  }
+
+  private HashMap<String, List<String>> getChartData() {
     ArrayList beforeNewYearChart = getNewYearChartData();
 
     HashMap<String, List<String>> yearsDataMap = new HashMap<>();

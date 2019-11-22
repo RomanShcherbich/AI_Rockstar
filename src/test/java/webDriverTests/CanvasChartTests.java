@@ -2,7 +2,6 @@ package webDriverTests;
 
 import org.junit.Test;
 import pages.ExpensesComparisonPage;
-import pages.LoginPage;
 import pages.SecuredPage;
 
 public class CanvasChartTests extends TableSortTests {
@@ -13,7 +12,13 @@ public class CanvasChartTests extends TableSortTests {
   }
 
   @Test
-  public void NewYearInChartTest() {
+  public void chartHasValidData() {
+    ExpensesComparisonPage chartPage = expensesComparisonPage();
+    chartPage.checkChartData();
+  }
+
+  @Test
+  public void addNewYearTest() {
     ExpensesComparisonPage chartPage = expensesComparisonPage();
     chartPage.addYearAndCheckData();
   }
