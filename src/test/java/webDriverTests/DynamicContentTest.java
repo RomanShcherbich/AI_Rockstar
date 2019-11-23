@@ -5,7 +5,6 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.SecuredPage;
 
@@ -14,11 +13,6 @@ public class DynamicContentTest extends BaseTests {
 
   private static By byAdvert1 = new By.ByXPath("//div[@id='flashSale']");
   private static By byAdvert2 = new By.ByXPath("//div[@id='flashSale2']");
-
-  public DynamicContentTest(WebDriver driver) {
-    driver.get(driver.getCurrentUrl() + "?showAd=true");
-    super.driver = driver;
-  }
 
   @Test
   public void checkAdvert1() {
@@ -31,6 +25,7 @@ public class DynamicContentTest extends BaseTests {
   }
 
   public SecuredPage login() {
+    driver.get(driver.getCurrentUrl() + "?showAd=true");
     LoginPage loginPage = new LoginPage(driver);
     return loginPage.clickLogin("validUser", "validPass", null);
   }
