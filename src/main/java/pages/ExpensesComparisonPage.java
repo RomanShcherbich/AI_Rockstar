@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExpensesComparisonPage extends AbstractPage {
 
@@ -37,7 +38,7 @@ public class ExpensesComparisonPage extends AbstractPage {
     HashMap<String, List<String>> actualYearsData = getChartData();
     List<String> actualMonths = getMonths();
 
-    for (var entry : actualYearsData.entrySet()
+    for (Map.Entry<String, List<String>> entry : actualYearsData.entrySet()
     ) {
       String year = entry.getKey();
       List<String> expected = expectedChartData.get(year);
