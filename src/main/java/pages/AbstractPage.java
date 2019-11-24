@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public abstract class AbstractPage extends AssertPages {
 
@@ -98,5 +99,28 @@ public abstract class AbstractPage extends AssertPages {
 
   protected ArrayList toArrayList(Object object) {
     return (ArrayList) object;
+  }
+
+
+  protected Stream<WebElement> sortElementsByText(List<WebElement> webElements, By by) {
+    return webElements.stream()
+        .sorted(
+            (e1, e2) -> {
+              Double n1 = getStringToAmount(e1.findElement(by).getText());
+              Double n2 = getStringToAmount(e2.findElement(by).getText());
+
+              if (n1 <= n2) {
+                return -1;
+              } else {
+                return 1;
+              }
+            }
+        );
+  }
+
+  protected Double getStringToAmount(String amount) {
+    return Double.valueOf(amount
+        .replace(" ", "").replace(",", "").replace("+", "")
+        .substring(0, amount.indexOf("USD") - 4));
   }
 }

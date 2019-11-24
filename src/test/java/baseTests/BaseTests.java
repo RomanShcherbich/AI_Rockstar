@@ -13,8 +13,8 @@ public class BaseTests {
 
   @Rule public TestName name = new TestName();
 
-  private String hackathonUrl = "https://demo.applitools.com/hackathon.html";
-//  private String hackathonUrl = "https://demo.applitools.com/hackathonV2.html";
+//  private String hackathonUrl = "https://demo.applitools.com/hackathon.html";
+  private String hackathonUrl = "https://demo.applitools.com/hackathonV2.html";
 
   @Before
   public void beforeEach() {
