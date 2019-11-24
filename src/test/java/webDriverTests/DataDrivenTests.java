@@ -14,13 +14,15 @@ import java.util.List;
 
 @RunWith(Parameterized.class)
 public class DataDrivenTests extends BaseTests {
-
+  /**
+   * no credentials test is changed. Alert is updated.
+   */
   @Parameters(name = "2.{3}:  {0} / {1} / {2}")
   public static List<Object[]> data() {
     return Arrays.asList(new Object[][]{
         {"validUser", null, "Password must be present", "a"},
         {null, "validPass", "Username must be present", "b"},
-        {null, null, "Both Username and Password must be present", "c"},
+        {null, null, "Please enter both username and password", "c"},
         {"validUser", "validPass", null, "d"}
     });
   }

@@ -18,7 +18,7 @@ public class EyesLoginPage extends EyesAbstractPage {
     private static By byPasswordField = new By.ByXPath("//input[@id='password']");
 
     public void checkLoginPage(){
-        checkWindow();
+        checkWindow("Login page");
     }
 
     public void clickLoginAlertCheck() {
@@ -32,11 +32,11 @@ public class EyesLoginPage extends EyesAbstractPage {
     public EyesSecuredPage clickLogin(String username, String password, String alert) {
         insertText(byUsernameField, username);
         insertText(byPasswordField, password);
-        clickButtonEyesCheck(byLogInButton);
+        clickButtonEyesCheck(byLogInButton, alert);
         return new EyesSecuredPage(eyes,driver);
     }
 
-    public EyesSecuredPage clickLoginNoCheck(String username, String password, String alert) {
+    public EyesSecuredPage clickLoginNoCheck(String username, String password) {
         insertText(byUsernameField, username);
         insertText(byPasswordField, password);
         clickButtonLog(byLogInButton);

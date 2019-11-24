@@ -23,9 +23,11 @@ public class EyesSecuredPage extends EyesAbstractPage {
   }
 
   public void eyesCheckSortingByAmount() {
+    checkWindow("TableBeforeSorting");
+
     List<WebElement> rowsElementsBefore = driver.findElements(byRows);
 
-    clickButtonEyesCheck(byColumnAmount);
+    clickButtonEyesCheck(byColumnAmount,"TableAfterSorting");
 
     List<WebElement> rowsElementsAfter = driver.findElements(byRows);
 
@@ -48,7 +50,7 @@ public class EyesSecuredPage extends EyesAbstractPage {
   }
 
   public EyesExpensesComparisonPage clickExpensesComparison() {
-    clickButtonEyesCheck(byLinkExpenses);
+    clickButtonEyesCheck(byLinkExpenses, "Char");
     return new EyesExpensesComparisonPage(eyes, driver);
   }
 }

@@ -13,8 +13,8 @@ public class EyesAbstractPage extends AbstractPage {
         super.driver = driver;
     }
 
-    public void checkWindow() {
-        eyes.checkWindow();
+    public void checkWindow(String tag) {
+        eyes.checkWindow(tag);
     }
 
     public void checkRegion(By by) {
@@ -30,12 +30,12 @@ public class EyesAbstractPage extends AbstractPage {
         }
     }
 
-    public void clickButtonEyesCheck(By buttonElement) {
+    public void clickButtonEyesCheck(By buttonElement, String tag) {
         if (isElementDisplayed(buttonElement)) {
             clickButtonLog(buttonElement);
-            checkWindow();
+            checkWindow(tag);
         } else {
-            checkWindow();
+            checkWindow(tag);
         }
     }
 }
