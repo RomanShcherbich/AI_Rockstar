@@ -22,13 +22,10 @@ public class DynamicContentTest extends BaseTests {
     login().assertDisplayingElement(byAdvert1);
   }
 
-  /**
-   * Remark.
    @Test
    public void checkAdvert2() {
    login().assertDisplayingElement(byAdvert2);
    }
-   */
 
 
   public SecuredPage login() {
