@@ -42,7 +42,7 @@ public class EyesBase extends BaseTests {
     System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
     driver = new ChromeDriver();
 
-    eyes.open(driver, "VisualTestingFramework", name.getMethodName(), new RectangleSize(1000, 900));
+    eyes.open(driver, "VisualTestingFramework", name.getMethodName(), new RectangleSize(1700, 900));
     driver.get(hackathonUrl);
   }
 
@@ -50,12 +50,12 @@ public class EyesBase extends BaseTests {
   @After
   public void afterEach() {
 
-    TestResultsSummary allTestResults = runner.getAllTestResults();
-
     eyes.closeAsync();
 
     driver.quit();
     eyes.abortIfNotClosed();
+
+    TestResultsSummary allTestResults = runner.getAllTestResults();
 
     System.out.println(allTestResults.toString());
   }

@@ -35,4 +35,11 @@ public class EyesLoginPage extends EyesAbstractPage {
         clickButtonEyesCheck(byLogInButton);
         return new EyesSecuredPage(eyes,driver);
     }
+
+    public EyesSecuredPage clickLoginNoCheck(String username, String password, String alert) {
+        insertText(byUsernameField, username);
+        insertText(byPasswordField, password);
+        clickButtonLog(byLogInButton);
+        return new EyesSecuredPage(eyes,driver);
+    }
 }

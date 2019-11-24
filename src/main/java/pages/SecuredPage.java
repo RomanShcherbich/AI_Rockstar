@@ -36,7 +36,7 @@ public class SecuredPage extends AbstractPage {
 
     List<WebElement> rowsElementsAfter = driver.findElements(byRows);
 
-    List<String> beforeOrdering = rowValuesToString(sortByAmount(rowsElementsBefore));
+    List<String> beforeOrdering = rowValuesToString(sortElementsByText(rowsElementsBefore,byAmountValue));
     List<String> afterOrdering = rowValuesToString(rowsElementsAfter.stream());
 
     assertFail(assertListData("", beforeOrdering, afterOrdering));
@@ -50,28 +50,6 @@ public class SecuredPage extends AbstractPage {
             .collect(Collectors.joining())
         )
         .collect(Collectors.toList());
-  }
-
-  private Stream<WebElement> sortByAmount(List<WebElement> webElements) {
-    return webElements.stream()
-        .sorted(
-            (e1, e2) -> {
-              Double n1 = getStringToAmount(e1.findElement(byAmountValue).getText());
-              Double n2 = getStringToAmount(e2.findElement(byAmountValue).getText());
-
-              if (n1 <= n2) {
-                return -1;
-              } else {
-                return 1;
-              }
-            }
-        );
-  }
-
-  public Double getStringToAmount(String amount) {
-    return Double.valueOf(amount
-        .replace(" ", "").replace(",", "").replace("+", "")
-        .substring(0, amount.indexOf("USD") - 4));
   }
 
   public ExpensesComparisonPage clickExpensesComparison() {

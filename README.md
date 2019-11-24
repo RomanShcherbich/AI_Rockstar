@@ -5,3 +5,7 @@ To traditional tests:
 	- runTraditionalTestsSuite.sh
 	
 Test report will be saved into {project}/target/site/surefire-report.html
+
+
+To applitools tests:
+	- runVisualAITests.sh
