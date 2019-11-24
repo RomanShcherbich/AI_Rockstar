@@ -41,13 +41,13 @@ public class VisualAITests extends EyesBase {
 
   @Test
   public void T3_TableSortTests() {
-    EyesSecuredPage securedPage = login().clickLogin("validUser", "validPass", null);
+    EyesSecuredPage securedPage = login().clickLoginNoCheck("validUser", "validPass");
     securedPage.eyesCheckSortingByAmount();
   }
 
   @Test
   public void T4_CanvasChartTest() {
-    EyesSecuredPage securedPage = login().clickLoginNoCheck("validUser", "validPass", null);
+    EyesSecuredPage securedPage = login().clickLoginNoCheck("validUser", "validPass");
     EyesExpensesComparisonPage page = securedPage.clickExpensesComparison();
     page.addYearAndCheck();
   }
@@ -55,6 +55,7 @@ public class VisualAITests extends EyesBase {
   @Test
   public void T5_DynamicContentTest() {
     driver.get(driver.getCurrentUrl() + "?showAd=true");
-    login().clickLogin("validUser", "validPass", null);
+    EyesSecuredPage securedPage = login().clickLoginNoCheck("validUser", "validPass");
+    securedPage.checkWindow("gif adverts");
   }
 }

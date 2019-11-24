@@ -14,6 +14,9 @@ public class DynamicContentTest extends BaseTests {
   private static By byAdvert1 = new By.ByXPath("//div[@id='flashSale']");
   private static By byAdvert2 = new By.ByXPath("//div[@id='flashSale2']");
 
+  /**
+   *Both tests don't find issues
+   */
   @Test
   public void checkAdvert1() {
     login().assertDisplayingElement(byAdvert1);

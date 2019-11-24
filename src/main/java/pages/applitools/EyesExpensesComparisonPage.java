@@ -13,6 +13,6 @@ public class EyesExpensesComparisonPage extends EyesAbstractPage {
   private static By byButtonAddYear = new By.ByXPath("//button[@class='btn btn-warning']");
 
   public void addYearAndCheck() {
-    clickButtonEyesCheck(byButtonAddYear);
+    clickButtonEyesCheck(byButtonAddYear,"2019 added");
   }
 }

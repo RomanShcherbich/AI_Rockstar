@@ -24,11 +24,14 @@ public class LoginPageUiElementsTest extends BaseTests {
     loginPage().pageTitleHasText("Login Form");
   }
 
+  /**
+   * Remark.
+   *
   @Test
   public void usernameIconIsDisplayed() {
     loginPage().usernameIconIsDisplayed();
   }
-
+   */
   @Test
   public void usernameTitleHasText() {
     loginPage().usernameTitleHasText("Username");
@@ -38,12 +41,14 @@ public class LoginPageUiElementsTest extends BaseTests {
   public void usernameFieldHasText() {
     loginPage().usernameFieldHasText("Enter your username");
   }
-
-  @Test
+/**
+ * Remark.
+ *
+ @Test
   public void passwordIconIsDisplayed() {
     loginPage().passwordIconIsDisplayed();
   }
-
+*/
   @Test
   public void passwordTitleHasText() {
     loginPage().passwordTitleHasText("Password");
@@ -83,9 +88,12 @@ public class LoginPageUiElementsTest extends BaseTests {
   public void facebookIsDisplayed() {
     loginPage().facebookIsDisplayed();
   }
-
-  @Test
+/**
+ * Remark.
+ *
+ @Test
   public void linkedinIsDisplayed() {
     loginPage().linkedinIsDisplayed();
   }
+ */
 }
