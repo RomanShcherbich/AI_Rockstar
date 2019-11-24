@@ -23,8 +23,8 @@ public class EyesBase extends BaseTests{
   @Rule
   public TestName name = new TestName();
 
-  private String hackathonUrl = "https://demo.applitools.com/hackathon.html";
-//  private String hackathonUrl = "https://demo.applitools.com/hackathonV2.html";
+//  private String hackathonUrl = "https://demo.applitools.com/hackathon.html";
+  private String hackathonUrl = "https://demo.applitools.com/hackathonV2.html";
 
   @BeforeClass
   public static void setBatch() {
@@ -53,13 +53,8 @@ public class EyesBase extends BaseTests{
 
   @After
   public void afterEach() {
-
     eyes.closeAsync();
     driver.quit();
     eyes.abortIfNotClosed();
-
-    TestResultsSummary allTestResults = runner.getAllTestResults();
-
-    System.out.println(allTestResults.toString());
   }
 }
