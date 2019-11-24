@@ -25,8 +25,8 @@ public class EyesBase extends BaseTests {
   @Rule
   public TestName name = new TestName();
 
-  private String hackathonUrl = "https://demo.applitools.com/hackathon.html";
-//  private String hackathonUrl = "https://demo.applitools.com/hackathonV2.html";
+//  private String hackathonUrl = "https://demo.applitools.com/hackathon.html";
+  private String hackathonUrl = "https://demo.applitools.com/hackathonV2.html";
 
 
   @Override
@@ -42,7 +42,7 @@ public class EyesBase extends BaseTests {
     System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
     driver = new ChromeDriver();
 
-    eyes.open(driver, "VisualTestingFramework", name.getMethodName(), new RectangleSize(1700, 900));
+    eyes.open(driver, "AiRockstarHackathon", name.getMethodName(), new RectangleSize(1700, 900));
     driver.get(hackathonUrl);
   }
 
@@ -50,12 +50,11 @@ public class EyesBase extends BaseTests {
   @After
   public void afterEach() {
 
-    eyes.closeAsync();
+    TestResultsSummary allTestResults = runner.getAllTestResults();
 
+    eyes.closeAsync();
     driver.quit();
     eyes.abortIfNotClosed();
-
-    TestResultsSummary allTestResults = runner.getAllTestResults();
 
     System.out.println(allTestResults.toString());
   }
